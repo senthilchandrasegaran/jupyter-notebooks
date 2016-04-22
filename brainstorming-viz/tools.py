@@ -19,6 +19,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import itertools
 import os
 import re
+import pprint as pp
 
 def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict={},labfs=10,valpha=0.4,ealpha=0.4,labelfont=20,with_node_weight=False,node_size_fixer=300.):
     plt.figure(figsize=(12,12))
@@ -42,7 +43,7 @@ def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict
             labe=nx.draw_networkx_labels(G,pos=pos,labels=labels,font_size=labelfont)
         else:
             labe=nx.draw_networkx_labels(G,pos=pos,font_size=labfs)
-    nx.draw_networkx_edges(G,pos=pos,edge_color='b',width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
+    nx.draw_networkx_edges(G,pos=pos,edge_color='gray',width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
     plt.title(sstt,fontsize=20)
     kk=plt.axis('off')
     return pos
@@ -99,7 +100,7 @@ def draw_centralities(G,centr,pos,with_edgewidth=False,withLabels=True,pernode_d
             edgewidth.append(d['weight'])
     else:
         edgewidth=[1 for i in G.edges()]
-    nx.draw_networkx_edges(G,pos=pos,edge_color='b',width=edgewidth, alpha=ealpha)
+    nx.draw_networkx_edges(G,pos=pos,edge_color='gray',width=edgewidth, alpha=ealpha)
     plt.title(title_st+' '+ sstt,fontsize=20)
     kk=plt.axis('off')
 
@@ -181,7 +182,7 @@ def draw_centralities_subplots(G,pos,withLabels=True,labfs=10,valpha=0.4,ealpha=
         nx.draw_networkx_nodes(G,pos=pos,nodelist=cent.keys(),
                                node_color=nodeclo,
                                cmap=plt.cm.Reds,alpha=valpha)
-        nx.draw_networkx_edges(G,pos=pos,edge_color='b', alpha=ealpha)
+        nx.draw_networkx_edges(G,pos=pos,edge_color='gray', alpha=ealpha)
         plt.title(sstt,fontsize=20)
         kk=plt.axis('off')
     if vals:
@@ -246,7 +247,7 @@ def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,ss
         e.set_facecolor(ellc[i])
     nx.draw_networkx_nodes(G,pos=pos, node_color=col,alpha=valpha)  
     nx.draw_networkx_labels(G,pos,labels=labelsn,font_size=labelfont)#,font_color='w')
-    nx.draw_networkx_edges(G,pos,edge_color='b',width=edgewidth, alpha=ealpha)
+    nx.draw_networkx_edges(G,pos,edge_color='gray',width=edgewidth, alpha=ealpha)
     plt.axis('equal')
     plt.axis('off')
     plt.show()
@@ -269,7 +270,7 @@ def print_communities(G,sstt):
             partdi[k].append(i)
     for i,k in partdi.items():
         parLis.append(k)
-    print(parLis)
+    pp.pprint(parLis)
     nodper={i:i for i in G.nodes()}
     print('Community modularity of',sstt,' = ',comm.modularity(part,G))
     return part,nodper
