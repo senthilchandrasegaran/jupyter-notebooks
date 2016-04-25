@@ -201,7 +201,7 @@ def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,ss
     for i,v in invpar.items():
         if i not in ninvpar:
             ninvpar[i]=nx.spring_layout(G.subgraph(v))
-    pos=nx.spring_layout(G,scale=70,k=0.8,iterations=20)        
+    pos=nx.spring_layout(G,scale=150,k=180.0,iterations=10)        
     ells=[]
     ellc=[]
     colors=[name for name,hex in matplotlib.colors.cnames.items()]
@@ -270,7 +270,8 @@ def print_communities(G,sstt):
             partdi[k].append(i)
     for i,k in partdi.items():
         parLis.append(k)
-    pp.pprint(parLis)
+    pp1 = pp.PrettyPrinter(width=120)
+    pp1.pprint(parLis)
     nodper={i:i for i in G.nodes()}
     print('Community modularity of',sstt,' = ',comm.modularity(part,G))
     return part,nodper
