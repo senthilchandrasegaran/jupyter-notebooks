@@ -187,6 +187,7 @@ def draw_centralities_subplots(G,pos,withLabels=True,labfs=10,valpha=0.4,ealpha=
         kk=plt.axis('off')
     if vals:
         return valus
+    plt.savefig("./figure.png")
 
 def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,sstt,titlefont=20,labelfont=20,valpha=0.2):
     import community 
