@@ -1,4 +1,6 @@
 *.un~
 *.swp
-*/.ipynb_checkpoints
-*/__pycache__
+./brainstorming-viz/.ipynb_checkpoints
+./similarity_matrices/.ipynb_checkpoints
+./brainstorming-viz/__pycache__
+./similarity_matrices/__pycache__
