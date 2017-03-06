@@ -1,2 +1,4 @@
 *.un~
 *.swp
+*/.ipynb_checkpoints
+*/__pycache__
